@@ -1,14 +1,16 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import "./App.css";
 import EmployeeManagementApp from "./components/EmployeeManagementApp";
+import EmployeeDetails from "./components/EmployeeDetails";
+import "./App.css";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route to="/" element={<Navigate to="/employee" />} />
-          <Route to="/employee" element={<EmployeeManagementApp />} />
+          <Route path="/" element={<Navigate to="/employee" />} />
+          <Route path="/employee" element={<EmployeeManagementApp />} />
+          <Route path="/employee/:id" element={<EmployeeDetails />} />
         </Routes>
       </BrowserRouter>
     </div>
