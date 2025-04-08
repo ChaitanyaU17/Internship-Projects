@@ -19,3 +19,34 @@ export const GetAllEmployess = async (search = '', page = 1, limit = 5) => {
     }
   };
   
+  export const CreateEmployee = async (empObj) => {
+    const url = `${BASE_URL}/api/employees`;
+  
+    try {
+      const formData = new FormData();
+      for (const key in empObj) {
+        formData.append(key, empObj[key]);
+      }
+  
+      const options = {
+        method: "POST",
+        body: formData, 
+      };
+  
+      const result = await fetch(url, options);
+      const data = await result.json();
+  
+      return {
+        success: result.ok,
+        message: data.message || "Employee created successfully",
+      };
+    } catch (error) {
+      console.error("Fetch failed:", error);
+      return {
+        success: false,
+        message: "Something went wrong. Please try again.",
+      };
+    }
+  };
+  
+  
