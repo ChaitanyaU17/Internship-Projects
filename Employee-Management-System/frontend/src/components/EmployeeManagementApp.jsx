@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 
 const EmployeeManagementApp = () => {
   const [showModal, setShowModal] = useState(false);
+  const [updateEmpObj, setUpdateEmpObj] = useState(null);
   const [employeeData, setEmployeeData] = useState({
     employees: [],
     pagination: {
@@ -32,6 +33,12 @@ const EmployeeManagementApp = () => {
     setShowModal(true);
   };
 
+  const handleUpdateEmployee = (empObj) => {
+    console.log("Update Obj", empObj);
+    setUpdateEmpObj(empObj);
+    setShowModal(true);
+  };
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center w-100 p-3">
       <h1>Employee Management App</h1>
@@ -53,12 +60,18 @@ const EmployeeManagementApp = () => {
           </div>
 
           <EmployeeTable
+            handleUpdateEmployee={handleUpdateEmployee}
             fetchEmployees={fetchEmployees}
             employees={employeeData.employees}
             pagination={employeeData.pagination}
           />
 
-          <AddEmployee showModal={showModal} setShowModal={setShowModal} fetchEmployees={fetchEmployees} />
+          <AddEmployee
+            updateEmpObj={updateEmpObj}
+            showModal={showModal}
+            setShowModal={setShowModal}
+            fetchEmployees={fetchEmployees}
+          />
         </div>
       </div>
       <ToastContainer
