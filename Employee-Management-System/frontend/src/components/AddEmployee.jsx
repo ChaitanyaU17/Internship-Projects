@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { CreateEmployee } from "../api";
+import React, { useEffect, useState } from "react";
+import { CreateEmployee, UpdateEmployeeById } from "../api";
 import { notify } from "../utils";
 
-const AddEmployee = ({ showModal, setShowModal, fetchEmployees }) => {
+
+//Add Employee
+const AddEmployee = ({ showModal, setShowModal, fetchEmployees, updateEmpObj }) => {
   const [employee, setEmployee] = useState({
     name: "",
     email: "",
@@ -11,6 +13,15 @@ const AddEmployee = ({ showModal, setShowModal, fetchEmployees }) => {
     salary: "",
     profileImage: null,
   });
+
+  const [updateMode, setUpdateMode] = useState(false);
+
+  useEffect(() => {
+    if (updateEmpObj)  {
+      setUpdateMode(true);
+      setEmployee(updateEmpObj);
+    }
+  }, [updateEmpObj])
 
   const resetEmployeeStates = () => {
     setEmployee({
@@ -40,7 +51,8 @@ const AddEmployee = ({ showModal, setShowModal, fetchEmployees }) => {
     console.log(employee);
 
     try {
-      const { success, message } = await CreateEmployee(employee);
+      const { success, message } = 
+      updateMode ? await UpdateEmployeeById(employee, employee._id) : await CreateEmployee(employee);
       if (success) {
         notify(message, "success");
         setShowModal(false);
@@ -68,7 +80,7 @@ const AddEmployee = ({ showModal, setShowModal, fetchEmployees }) => {
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5>Add Employee</h5>
+            <h5>{updateMode ? 'Update Employee' : 'Add Employee'}</h5>
             <button
               type="button"
               className="btn-close"
@@ -145,12 +157,11 @@ const AddEmployee = ({ showModal, setShowModal, fetchEmployees }) => {
                   className="form-control"
                   name="profileImage"
                   onChange={handleFileChange}
-                  required
                 />
               </div>
 
               <button className="btn btn-primary" type="submit">
-                Save
+                {updateMode ? 'Update' : 'Save' }
               </button>
             </form>
           </div>
