@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function EmployeeTable({ employees, pagination, fetchEmployees }) {
+function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmployee }) {
   const headers = ["Name", "Email", "Phone", "Department", "Actions"];
   const { currentPage, totalPages } = pagination;
 
@@ -22,7 +22,7 @@ function EmployeeTable({ employees, pagination, fetchEmployees }) {
             role="button"
             data-bs-toggle="tooltip"
             data-bs-placement="top"
-            onClick={() => {}}
+            onClick={() => handleUpdateEmployee(employee)}
           ></i>
 
           <i
