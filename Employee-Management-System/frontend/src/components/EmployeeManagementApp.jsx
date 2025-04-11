@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import EmployeeTable from "./EmployeeTable";
-import { GetAllEmployess } from "../api";
+import { DeleteEmployeeById, GetAllEmployess } from "../api";
 import AddEmployee from "./AddEmployee";
 import { ToastContainer } from "react-toastify";
+import { notify } from "../utils";
 
 const EmployeeManagementApp = () => {
   const [showModal, setShowModal] = useState(false);
@@ -39,6 +40,22 @@ const EmployeeManagementApp = () => {
     setShowModal(true);
   };
 
+  const handleDeleteEmployee = async (emp) => {
+    try {
+      const { success, message } = await DeleteEmployeeById(emp._id);
+      
+      if (success) {
+              notify(message, "success");
+              fetchEmployees();
+            } else {
+              notify(message, "error");
+            }
+    } catch (error) {
+      console.log("Error", error);
+      notify(error, "error");
+    }
+  }
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center w-100 p-3">
       <h1>Employee Management App</h1>
@@ -64,6 +81,7 @@ const EmployeeManagementApp = () => {
             fetchEmployees={fetchEmployees}
             employees={employeeData.employees}
             pagination={employeeData.pagination}
+            handleDeleteEmployee={handleDeleteEmployee}
           />
 
           <AddEmployee
