@@ -79,3 +79,53 @@ export const GetAllEmployess = async (search = '', page = 1, limit = 5) => {
       };
     }
   };
+
+  export const DeleteEmployeeById = async (id) => {
+    const url = `${BASE_URL}/api/employees/${id}`;
+  
+    try {
+  
+      const options = {
+        method: "DELETE",
+        'Content-Type': 'application/json',
+      };
+  
+      const result = await fetch(url, options);
+      const data = await result.json();
+  
+      return {
+        success: result.ok,
+        message: data.message || "Employee Deleted successfully",
+      };
+    } catch (error) {
+      console.error("Fetch failed:", error);
+      return {
+        success: false,
+        message: "Something went wrong. Please try again.",
+      };
+    }
+  };
+
+  export const GetEmployeeById = async (id) => {
+    const url = `${BASE_URL}/api/employees/${id}`;
+  
+    try {
+  
+      const options = {
+        method: "GET",
+        'Content-Type': 'application/json',
+      };
+  
+      const result = await fetch(url, options);
+      const data = await result.json();
+      return data;
+    } catch (error) {
+      console.error("Fetch failed:", error);
+      return {
+        success: false,
+        message: "Something went wrong. Please try again.",
+      };
+    }
+  };
+
+  
