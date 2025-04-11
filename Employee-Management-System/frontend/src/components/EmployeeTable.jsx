@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmployee }) {
+function EmployeeTable({
+  employees,
+  pagination,
+  fetchEmployees,
+  handleUpdateEmployee,
+  handleDeleteEmployee,
+}) {
   const headers = ["Name", "Email", "Phone", "Department", "Actions"];
   const { currentPage, totalPages } = pagination;
 
@@ -9,7 +15,7 @@ function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmpl
     return (
       <tr>
         <td>
-          <Link to={"/employee/id"} className="text-decoration-none">
+          <Link to={`/employee/${employee._id}`} className="text-decoration-none">
             {employee.name}
           </Link>
         </td>
@@ -30,30 +36,33 @@ function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmpl
             role="button"
             data-bs-toggle="tooltip"
             data-bs-placement="top"
-            onClick={() => {}}
+            onClick={() => handleDeleteEmployee(employee)}
           ></i>
         </td>
       </tr>
     );
   };
 
-  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+  const pageNumbers = Array.from(
+    { length: totalPages },
+    (_, index) => index + 1
+  );
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      handlePagination(currentPage + 1);  
+      handlePagination(currentPage + 1);
     }
-  }
+  };
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      handlePagination(currentPage - 1);  
+      handlePagination(currentPage - 1);
     }
-  }
+  };
 
   const handlePagination = (currPage) => {
     fetchEmployees("", currPage, 5);
-  }
+  };
 
   return (
     <>
@@ -73,35 +82,39 @@ function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmpl
         </tbody>
       </table>
       <div className="d-flex justify-content-between align-items-center my-3">
-          <span className="badge bg-primary">
-            Page {currentPage} of {totalPages}
-          </span>
-          <div>
-            <button
-              className="btn btn-outline-primary  me-2"
-              onClick={() => handlePreviousPage()}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
+        <span className="badge bg-primary">
+          Page {currentPage} of {totalPages}
+        </span>
+        <div>
+          <button
+            className="btn btn-outline-primary  me-2"
+            onClick={() => handlePreviousPage()}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
 
-            {
-              pageNumbers.map((page, index) => (
-                <button key={index} onClick={() => handlePagination(page)} className={`btn btn-outline-primary me-1 ${currentPage === page ? 'active' : ''}`}>
-                  {page}
-                </button>
-              ))
-            }
-
+          {pageNumbers.map((page, index) => (
             <button
-              className="btn btn-outline-primary ms-2"
-              onClick={() => handleNextPage()}
-              disabled={totalPages === currentPage}
+              key={index}
+              onClick={() => handlePagination(page)}
+              className={`btn btn-outline-primary me-1 ${
+                currentPage === page ? "active" : ""
+              }`}
             >
-              Next
+              {page}
             </button>
-          </div>
+          ))}
+
+          <button
+            className="btn btn-outline-primary ms-2"
+            onClick={() => handleNextPage()}
+            disabled={totalPages === currentPage}
+          >
+            Next
+          </button>
         </div>
+      </div>
     </>
   );
 }
