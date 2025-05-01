@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAuthHeader } from '../utils/auth';
 
-const API_URL = `${process.env.REACT_APP_API_URL}/api/messages` || 'http://localhost:5000/api/messages';
+const API_URL = `${process.env.REACT_APP_API_URL}/api/messages`;
 
 // Send a message from contact form
 export const sendMessage = async (messageData) => {

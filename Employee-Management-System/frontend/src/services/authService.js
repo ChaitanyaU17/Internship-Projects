@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_URL = `${process.env.REACT_APP_API_URL}/api/auth` || 'http://localhost:5000/api/auth';
+const API_URL = `${process.env.REACT_APP_API_URL}/api/auth`;
+
+console.log("API_URL:", API_URL);
+
+
 const TOKEN_KEY = 'auth_token';
 const USER_KEY = 'current_user';
 
