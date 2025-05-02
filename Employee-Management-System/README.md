@@ -150,17 +150,38 @@ npm run dev
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-> `screenshots/`
+### Home Page
+![Home Page](images/Home%20page.png)
 
-### 🔐 Login Page  
+### Login Page
+![Login Page](images/Login%20page.png)
 
+### Register Page
+![Register Page](images/Admin%20Register.png)
 
-### 📊 Admin Dashboard  
+### Admin Dashboard
+![Admin Dashboard](images/Admin%20Dashboard.png)
 
+### Employee Profile Register
+![Employee Profile Register](images/Employee%20Profile%20Register.png)
 
-### 👤 Employee Profile  
+### Employees List
+![Employees List](images/Employees%20List.png)
+
+### Register Employee
+![Register Employee](images/Register%20Employee.png)
+
+### Update Employees
+![Update Employees](images/Update%20Employees.png)
+
+### Contact Us Page
+![Contact Us Page](images/Contact%20us%20page.png)
+
+### Admin Receiving Employee Message
+![Admin Receiving Employee Message](images/Admin%20receiving%20employee%20messages.png)
+
 
 
 ---
