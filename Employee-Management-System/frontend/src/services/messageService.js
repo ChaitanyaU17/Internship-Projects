@@ -1,13 +1,15 @@
 import axios from 'axios';
 import { getAuthHeader } from '../utils/auth';
 
-const API_URL = `https://internship-projects-2.onrender.com/api/messages`;
+const API_URL = `http://localhost:5000/api/messages`;
 
 // Send a message from contact form
 export const sendMessage = async (messageData) => {
   try {
     const response = await axios.post(API_URL, messageData);
+    console.log(response.data);
     return response.data;
+    
   } catch (error) {
     console.error('Error sending message:', error);
     

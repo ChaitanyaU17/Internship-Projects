@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 // Create an axios instance with default config
 const axiosInstance = axios.create({
-  baseURL: `https://internship-projects-2.onrender.com/api`,
+  baseURL: `http://localhost:5000/api`,
   headers: {
     'Content-Type': 'application/json'
   },

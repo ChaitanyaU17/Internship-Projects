@@ -198,7 +198,6 @@ const Layout = () => {
     if (location.pathname === '/employees') return 'Employee Management';
     if (location.pathname === '/employees/add') return 'Add Employee';
     if (location.pathname.includes('/employees/edit')) return 'Edit Employee';
-    if (location.pathname === '/news') return 'News Management';
     if (location.pathname === '/messages') return 'My Messages';
     if (location.pathname === '/admin/messages') return 'Message Management';
     if (location.pathname === '/contact') return 'Contact Us';
@@ -268,16 +267,7 @@ const Layout = () => {
                     <span role="img" aria-label="employees">👥</span> Employees
                   </Link>
                 </NavItem>
-                
-                {/* <NavItem
-                  className={location.pathname.includes('/news') ? 'active' : ''}
-                  whileHover={{ x: 5 }}
-                  onClick={closeSidebarOnMobile}
-                >
-                  <Link to="/news">
-                    <span role="img" aria-label="news">📰</span> News Management
-                  </Link>
-                </NavItem> */}
+            
                 
                 <NavItem
                   className={location.pathname.includes('/admin/messages') ? 'active' : ''}

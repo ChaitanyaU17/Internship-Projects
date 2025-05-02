@@ -35,7 +35,7 @@ app.use(morgan('dev'));
 // Define routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/employees', require('./routes/employees'));
-// app.use('/api/news', require('./routes/news'));
+app.use('/api/messages', require('./routes/messageRoutes'));
 app.use('/api/profile', userProfileRoutes);
 
 app.use('/', (req, res) => {

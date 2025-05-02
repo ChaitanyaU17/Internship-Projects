@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-// const API_URL = 'http://localhost:5000/api/auth';
-
-const API_URL = `https://internship-projects-2.onrender.com/api/auth`;
+const API_URL = `http://localhost:5000/api/auth`;
 
 console.log("API_URL:", API_URL);
 

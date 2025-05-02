@@ -91,21 +91,21 @@ const Input = styled(Field)`
   }
 `;
 
-const TextArea = styled(Field)`
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--light-gray-color);
-  border-radius: 4px;
-  font-size: 1rem;
-  min-height: 150px;
-  resize: vertical;
+// const TextArea = styled(Field)`
+//   width: 100%;
+//   padding: 0.75rem 1rem;
+//   border: 1px solid var(--light-gray-color);
+//   border-radius: 4px;
+//   font-size: 1rem;
+//   min-height: 150px;
+//   resize: vertical;
   
-  &:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
-  }
-`;
+//   &:focus {
+//     outline: none;
+//     border-color: var(--primary-color);
+//     box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+//   }
+// `;
 
 const ErrorText = styled.div`
   color: var(--danger-color);

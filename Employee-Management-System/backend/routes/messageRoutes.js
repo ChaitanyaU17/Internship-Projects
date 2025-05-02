@@ -6,6 +6,7 @@ const { protect, admin } = require('../middleware/authMiddleware');
 // Public routes
 router.post('/', messageController.createMessage);
 
+
 // Protected routes (require authentication)
 router.get('/user/:userId', protect, messageController.getUserMessages);
 router.get('/:id', protect, messageController.getMessageById);

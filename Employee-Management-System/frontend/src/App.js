@@ -96,15 +96,6 @@ function App() {
             ) : (
               <Route path="/employees/*" element={<Navigate to="/dashboard" replace />} />
             )}
-            
-            {/* News Routes - Admin Only */}
-            {/* {isAdmin ? (
-              <Route path="/news">
-                <Route index element={<NewsManagement />} />
-              </Route>
-            ) : (
-              <Route path="/news/*" element={<Navigate to="/dashboard" replace />} />
-            )} */}
 
              {/* Employee Profile Route */}
              <Route path="/profile" element={<EmployeeProfile />} />
