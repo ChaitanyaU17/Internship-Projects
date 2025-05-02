@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: `${process.env.REACT_APP_API_URL}/api/profile` // your backend URL
+  baseURL: `https://internship-projects-2.onrender.com/api/profile` // your backend URL
 });
 
 // Register new profile
