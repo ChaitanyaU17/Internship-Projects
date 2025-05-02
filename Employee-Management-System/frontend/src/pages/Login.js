@@ -96,29 +96,29 @@ const SubmitButton = styled(motion.button)`
   }
 `;
 
-const DemoCredentials = styled.div`
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  border: 1px solid var(--primary-color);
+// const DemoCredentials = styled.div`
+//   margin-top: 1.5rem;
+//   padding: 1rem;
+//   background-color: #f8f9fa;
+//   border-radius: 4px;
+//   font-size: 0.875rem;
+//   border: 1px solid var(--primary-color);
   
-  h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-    font-weight: 600;
-  }
+//   h3 {
+//     font-size: 1rem;
+//     margin-bottom: 0.5rem;
+//     color: var(--primary-color);
+//     font-weight: 600;
+//   }
   
-  p {
-    margin: 0.25rem 0;
-  }
+//   p {
+//     margin: 0.25rem 0;
+//   }
   
-  strong {
-    font-weight: 600;
-  }
-`;
+//   strong {
+//     font-weight: 600;
+//   }
+// `;
 
 const SignupLink = styled.div`
   text-align: center;

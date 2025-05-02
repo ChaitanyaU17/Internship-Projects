@@ -656,7 +656,6 @@ const EmployeeList = () => {
     
     setConfirmDialog({
       isOpen: true,
-      employeeId: deleteId,
       employeeId: deleteId.toString(),
       employeeName: name
     });

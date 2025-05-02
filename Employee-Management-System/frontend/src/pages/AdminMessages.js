@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 import { 
   getAllMessages, 
-  getMessageById, 
   updateMessageStatus, 
   addReply, 
   deleteMessage 
@@ -275,13 +274,14 @@ const AdminMessages = () => {
   const [expandedMessage, setExpandedMessage] = useState(null);
   const [replyText, setReplyText] = useState('');
   const [submitting, setSubmitting] = useState(false);
+
   
   // Fetch messages based on filter
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
     try {
       setLoading(true);
       const response = await getAllMessages(filter !== 'all' ? filter : '');
-      
+  
       if (response.success) {
         setMessages(response.data);
       } else {
@@ -293,12 +293,12 @@ const AdminMessages = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter]); // Include dependencies here
   
-  // Initial fetch
   useEffect(() => {
     fetchMessages();
-  }, [filter]);
+  }, [fetchMessages]);
+  
   
   // Toggle message expansion
   const toggleMessageExpansion = (messageId) => {
